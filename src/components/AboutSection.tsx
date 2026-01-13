@@ -1,6 +1,8 @@
+import { useState } from "react";
 import ProfilePic from "../assets/potato.png";
 
 const AboutSection = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const skills = ["Python", "NLP", "Backend Dev", "FastAPI", "ExpressJS"];
 
   return (
@@ -73,26 +75,29 @@ const AboutSection = () => {
 
         {/* Right Column: Image / Visual */}
         <div className="flex justify-center md:justify-end">
-          {/* Height updated to h-[26rem] (mobile) and md:h-[32rem] (desktop) 
-             to accommodate the 1792x2400 aspect ratio without clipping the head.
-          */}
           <div className="relative w-72 h-[26rem] md:w-80 md:h-[32rem]">
             
-            {/* 1. Decorative Ring (Furthest Back) - ADJUSTED GLOW */}
+            {/* 1. Decorative Ring */}
             <div className="absolute bottom-0 left-2 right-2 h-[80%] bg-gradient-to-tr from-blue-500 to-emerald-500 rounded-2xl rotate-6 opacity-60 blur-2xl transform translate-y-4"></div>
             
-            {/* 2. The Box/Frame (Middle Layer) 
-                Height set to 80% so the top 20% of the image sticks out.
-            */}
-            <div className="absolute bottom-0 left-0 right-0 h-[80%] bg-gray-200 dark:bg-gray-800 rounded-2xl border-2 border-white dark:border-gray-700 shadow-2xl"></div>
+            {/* 2. The Box/Frame */}
+            <div className="absolute bottom-0 left-0 right-0 h-[80%] bg-gray-200 dark:bg-gray-800 rounded-2xl border-2 border-white dark:border-gray-700 shadow-2xl overflow-hidden">
+               {/* 2.5 Loading Spinner (Centered in the box) */}
+               {!isLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-emerald-500"></div>
+                  </div>
+               )}
+            </div>
 
-            {/* 3. The Image (Top Layer) 
-                z-10 ensures it sits ON TOP of the box.
-            */}
+            {/* 3. The Image (Top Layer) */}
             <img 
               src={ProfilePic}
-              alt="Axel Paredes" 
-              className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto max-w-none object-contain z-10 drop-shadow-xl"
+              alt="Axel Paredes"
+              onLoad={() => setIsLoaded(true)}
+              className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto max-w-none object-contain z-10 drop-shadow-xl transition-all duration-700 ease-out ${
+                isLoaded ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-95"
+              }`}
             />
           </div>
         </div>
