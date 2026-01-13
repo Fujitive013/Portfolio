@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
@@ -78,27 +79,18 @@ const projects = [
 
 const ProjectsSection = () => {
   const [index, setIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true); // State to control opacity
+  const [direction, setDirection] = useState(0);
 
   const slide = useMemo(() => projects[index], [index]);
 
-  // Helper function to handle smooth transition
-  const changeProject = (newIndex: number) => {
-    setIsVisible(false); // 1. Fade out
-    setTimeout(() => {
-      setIndex(newIndex); // 2. Change content after fade out completes
-      setIsVisible(true); // 3. Fade back in
-    }, 300); // 300ms matches the duration-300 CSS class
-  };
-
   const handleNext = () => {
-    const nextIndex = (index + 1) % projects.length;
-    changeProject(nextIndex);
+    setDirection(1);
+    setIndex((prev) => (prev + 1) % projects.length);
   };
 
   const handlePrev = () => {
-    const prevIndex = (index - 1 + projects.length) % projects.length;
-    changeProject(prevIndex);
+    setDirection(-1);
+    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
@@ -113,32 +105,39 @@ const ProjectsSection = () => {
         
         {/* Navigation Buttons */}
         <div className="flex gap-3">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={handlePrev}
-            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110 active:scale-95"
+            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label="Previous project"
           >
             ←
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={handleNext}
-            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-all hover:scale-110 active:scale-95"
+            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors"
             aria-label="Next project"
           >
             →
-          </button>
+          </motion.button>
         </div>
       </div>
 
-      <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 transition-colors">
-        {/* Main Card Content */}
-        {/* We use min-h-[500px] to ensure the box doesn't collapse during the fade transition */}
-        <div className="min-h-[600px] lg:min-h-[500px] flex flex-col">
-          <div 
-            className={`grid grid-cols-1 lg:grid-cols-12 flex-grow transition-all duration-300 ease-in-out ${
-              isVisible ? "opacity-100 translate-x-0 blur-0" : "opacity-0 -translate-x-4 blur-sm"
-            }`}
-          >
+      <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
+        <div className="min-h-[600px] lg:min-h-[500px] flex flex-col relative">
+          <AnimatePresence mode="wait" initial={false} custom={direction}>
+            <motion.div
+              key={index}
+              custom={direction}
+              initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="grid grid-cols-1 lg:grid-cols-12 flex-grow h-full w-full"
+            >
             
             {/* Left Side: Details */}
             <div className="lg:col-span-8 p-8 flex flex-col justify-between">
@@ -208,7 +207,8 @@ const ProjectsSection = () => {
                 ))}
               </div>
             </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Progress Bar Indicators */}
@@ -216,7 +216,10 @@ const ProjectsSection = () => {
           {projects.map((_, i) => (
             <button
               key={i}
-              onClick={() => changeProject(i)} // Use the changeProject helper here too
+              onClick={() => {
+                setDirection(i > index ? 1 : -1);
+                setIndex(i);
+              }}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === index ? 'w-12 bg-emerald-500' : 'w-4 bg-gray-300 dark:bg-gray-600 hover:bg-emerald-300'
               }`}

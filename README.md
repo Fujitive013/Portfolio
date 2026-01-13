@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Axel Paredes - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Portfolio Banner](public/logo.svg)
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Showcasing my journey as a Backend Developer and NLP enthusiast, this portfolio features a dynamic project gallery, interactive UI elements, and a clean, accessible design.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
+-   **Dark Mode Support**: Seamless theme switching for better user experience.
+-   **Interactive Projects Gallery**: Animated carousel with filtering and detailed project metrics.
+-   **Smooth Animations**: Powered by Framer Motion for engaging micro-interactions.
+-   **Clean Architecture**: Built with modern best practices in React and TypeScript.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Frontend**: React (Vite), TypeScript
+-   **Styling**: Tailwind CSS, PostCSS
+-   **Animations**: Framer Motion
+-   **Icons**: React Icons / SVG Modules
+-   **Deployment**: Vercel
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-   Node.js (v18 or higher)
+-   npm or yarn
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Fujitive013/portfolio.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd portfolio
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+-   **LinkedIn**: [Axel Paredes](https://linkedin.com/in/axel-paredes-4b4679398)
+-   **GitHub**: [Fujitive013](https://github.com/Fujitive013)
+-   **Email**: [paredes.axel456@gmail.com](mailto:paredes.axel456@gmail.com)

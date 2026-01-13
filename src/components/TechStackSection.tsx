@@ -19,6 +19,7 @@ import VSCodeIcon from "../assets/Visual Studio Code (VS Code).svg";
 import ViteIcon from "../assets/Vite.js.svg";
 import DockerIcon from "../assets/Docker.svg";
 import ExpoIcon from "../assets/expo-go-app-seeklogo.png";
+import { motion } from "framer-motion";
 
 const brandPalette: Record<string, { className: string; hex: string; hexDark?: string }> = {
   JavaScript: { className: "text-amber-500", hex: "#f59e0b" },
@@ -137,34 +138,61 @@ const Pill = ({ label, pillClass }: { label: string; pillClass: string }) => {
   const innerAlpha = isDark ? "99" : "40";
 
   return (
-    <span
-      className={`px-4 py-2 rounded-full border shadow-sm inline-flex items-center gap-2 ${pillClass}`}
+    <motion.span
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 1.05, rotate: 2, zIndex: 10 }}
+      whileTap={{ scale: 0.95, rotate: -2 }}
+      drag
+      dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+      dragElastic={0.2}
+      className={`cursor-grab active:cursor-grabbing px-4 py-2 rounded-full border shadow-sm inline-flex items-center gap-2 ${pillClass} user-select-none touch-none`}
       style={{ boxShadow: `0 0 0 1px ${accentHex}20, 0 6px 12px -6px ${accentHex}${outerAlpha}, 0 12px 28px -14px ${accentHex}${innerAlpha}` }}
     >
-      <span className={`flex items-center justify-center ${sizeClass}`}>
+      <span className={`flex items-center justify-center ${sizeClass} pointer-events-none`}>
         <span className={accent}>{iconFor(label, sizeClass)}</span>
       </span>
-      <span className={`font-semibold ${accent}`}>{label}</span>
-    </span>
+      <span className={`font-semibold ${accent} pointer-events-none translate-y-[1px]`}>{label}</span>
+    </motion.span>
+  );
+};
+
+const SkillCategory = ({ category }: { category: typeof categories[0] }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-800 h-full"
+    >
+      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center justify-between">
+        {category.title}
+      </h3>
+      <div className="flex flex-wrap gap-2">
+        {category.items.map((item) => (
+           <Pill key={item} label={item} pillClass={category.pillClass} />
+        ))}
+      </div>
+    </motion.div>
   );
 };
 
 const TechStackSection = () => (
   <section id="skills" className="section-block max-w-6xl mx-auto px-6 py-16">
-    <h2 className="text-3xl font-semibold mb-6">Skills & Tech</h2>
-    <div className="grid gap-6 md:grid-cols-2">
+    <motion.h2 
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="text-3xl font-semibold mb-6"
+    >
+      Skills & Tech
+    </motion.h2>
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
       {categories.map((category) => (
-        <div
-          key={category.title}
-          className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-800"
-        >
-          <h3 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100">{category.title}</h3>
-          <div className="flex flex-wrap gap-2 text-sm">
-            {category.items.map((item) => (
-              <Pill key={item} label={item} pillClass={category.pillClass} />
-            ))}
-          </div>
-        </div>
+        <SkillCategory key={category.title} category={category} />
       ))}
     </div>
   </section>
