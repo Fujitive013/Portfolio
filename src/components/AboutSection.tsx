@@ -22,7 +22,7 @@ const AboutSection = () => {
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
             </span>
             <span className="text-xs font-medium text-emerald-800 dark:text-emerald-300 uppercase tracking-wide">
-             4th Year Student
+             4th Year IT Student
             </span>
           </div>
 
