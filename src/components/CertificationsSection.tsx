@@ -28,7 +28,7 @@ const CertificationsSection = () => (
       viewport={{ once: true }}
       className="mb-12"
     >
-      <h2 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">
+      <h2 className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r text-white">
         Certifications & Awards
       </h2>
       <p className="text-gray-600 dark:text-gray-400 max-w-2xl">
