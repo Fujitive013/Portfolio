@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 const projects = [
   {
@@ -83,7 +83,7 @@ const ProjectsSection = () => {
   const slide = useMemo(() => projects[index], [index]);
 
   // Helper function to handle smooth transition
-  const changeProject = (newIndex) => {
+  const changeProject = (newIndex: number) => {
     setIsVisible(false); // 1. Fade out
     setTimeout(() => {
       setIndex(newIndex); // 2. Change content after fade out completes

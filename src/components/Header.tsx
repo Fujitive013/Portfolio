@@ -38,6 +38,14 @@ const Header = ({}: HeaderProps) => {
                 {link.label}
               </a>
             ))}
+            <a 
+              href="/Resume.pdf"
+              download="Axel_Paredes_Resume.pdf"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Resume
+            </a>
           </nav>
 
           {/* Call to Action Button (Contact) */}
@@ -77,6 +85,15 @@ const Header = ({}: HeaderProps) => {
                 {link.label}
               </a>
             ))}
+            <a
+              href="/Resume.pdf"
+              download="Axel_Paredes_Resume.pdf"
+              className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 flex items-center justify-center gap-2"
+              onClick={handleNavClick}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Resume
+            </a>
             <a
                href="#contact"
                className="mt-2 px-4 py-3 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold"
