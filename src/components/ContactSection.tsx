@@ -71,7 +71,7 @@ const ContactSection = () => {
   const marqueeStyles = { animation: "contactScroll 22s linear infinite" };
 
   return (
-    <section id="contact" className="section-block max-w-5xl mx-auto px-6 py-16 text-gray-900 dark:text-gray-100">
+    <section id="contact" className="section-block max-w-6xl mx-auto px-6 py-16 text-gray-900 dark:text-gray-100">
       <style>{`
         @keyframes contactScroll {
           0% { transform: translateX(0); }
