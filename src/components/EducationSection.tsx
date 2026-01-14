@@ -6,7 +6,7 @@ const EDUCATION_DATA = {
   university: "University of Science and Technology of Southern Philippines",
   degree: "Bachelor of Science in Information Technology",
   years: "2022 – 2026",
-  description: "Focused on backend systems architecture, real-time application development, and applied machine learning. Actively involved in technical leadership and scalable software design."
+  description: "Focused on backend systems architecture, real-time application development, and applied machine learning. Actively seeking OJT / Internship. Focus: Backend systems, real-time apps, and ML. Passionate about scalable software design."
 };
 
 const EducationSection = () => {
