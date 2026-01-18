@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import InteractiveStars from "./InteractiveStars";
 
 const AboutSection = () => {
-  const skills = ["Python", "NLP", "Backend Dev", "FastAPI", "ExpressJS"];
+  const skills = ["Python", "Backend Dev", "FastAPI", "ExpressJS"];
 
   return (
     <section id="about" className="relative w-full max-w-6xl mx-auto px-6 py-20 md:py-32 text-gray-900 dark:text-gray-100 hidden-scrollbar">
@@ -46,7 +46,7 @@ const AboutSection = () => {
               Axel L. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">Paredes</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-              Backend Developer & NLP Enthusiast
+              Backend Developer & Machine Learning Enthusiast
             </p>
           </div>
 
