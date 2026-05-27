@@ -1,50 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700;800&family=Oswald:wght@400;600&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+	--manga-ink: #0c0c0c;
+	--manga-paper: #f8f6ef;
+	--manga-panel: #ffffff;
+	--manga-border: #111111;
+	--manga-muted: #3a3a3a;
+}
+
+html.dark {
+	--manga-ink: #f5f5f5;
+	--manga-paper: #0c0c0c;
+	--manga-panel: #141414;
+	--manga-border: #f5f5f5;
+	--manga-muted: #bdbdbd;
+}
 
 html {
 	scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors;
-}
-
+/* Manga paper background */
 body {
-	background-color: #f8fafc;
-	color: #0f172a;
-}
-
-html.dark body {
-	background-color: #0b1120;
-	color: #e2e8f0;
+	background-color: var(--manga-paper);
+	color: var(--manga-ink);
+	font-family: "Shippori Mincho", "Times New Roman", serif;
+	background-image:
+		radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.08) 1px, transparent 0),
+		radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+	background-size: 18px 18px, 28px 28px;
+	background-position: 0 0, 6px 6px;
 }
 
 section {
 	scroll-margin-top: 96px;
 }
 
-.section-block {
-	animation: slideUp 0.5s ease;
+/* Manga layout helpers */
+.manga-page {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 24px 20px 64px;
 }
 
-.slide-card {
-	animation: slideFade 0.35s ease;
+.manga-panel {
+	background: var(--manga-panel);
+	border: 2px solid var(--manga-border);
+	box-shadow: 6px 6px 0 var(--manga-border);
+	padding: 24px;
+	position: relative;
 }
 
-@keyframes slideUp {
+.manga-panel::after {
+	content: "";
+	position: absolute;
+	inset: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	pointer-events: none;
+}
+
+.manga-title {
+	font-family: "Oswald", "Arial Narrow", sans-serif;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.manga-caption {
+	font-family: "Oswald", "Arial Narrow", sans-serif;
+	font-size: 12px;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--manga-muted);
+}
+
+.manga-ink {
+	color: var(--manga-ink);
+}
+
+.manga-muted-text {
+	color: var(--manga-muted);
+}
+
+.manga-border {
+	border-color: var(--manga-border);
+}
+
+.manga-bg {
+	background: var(--manga-panel);
+}
+
+.manga-pill {
+	color: var(--manga-ink);
+	border-color: var(--manga-border);
+	background: var(--manga-panel);
+}
+
+.manga-dot {
+	background: var(--manga-border);
+}
+
+.manga-divider {
+	height: 2px;
+	width: 100%;
+	background: var(--manga-border);
+	margin: 16px 0;
+}
+
+.manga-button {
+	border: 2px solid var(--manga-border);
+	background: var(--manga-ink);
+	color: var(--manga-panel);
+	padding: 10px 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+	box-shadow: 3px 3px 0 var(--manga-border);
+}
+
+.manga-button:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 6px 6px 0 var(--manga-border);
+}
+
+.manga-outline-button {
+	border: 2px solid var(--manga-border);
+	background: transparent;
+	color: var(--manga-ink);
+	.manga-fab {
+		border: 2px solid var(--manga-border);
+		background: var(--manga-panel);
+		color: var(--manga-ink);
+		box-shadow: 4px 4px 0 var(--manga-border);
+	}
+
+	.manga-fab:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 var(--manga-border);
+	}
+	padding: 10px 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+	box-shadow: 3px 3px 0 var(--manga-border);
+}
+
+.manga-outline-button:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 6px 6px 0 var(--manga-border);
+}
+
+.manga-sfx {
+	font-family: "Oswald", "Arial Narrow", sans-serif;
+	font-size: 22px;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.manga-skill {
+	color: var(--manga-ink) !important;
+	border-color: var(--manga-border) !important;
+	background: var(--manga-panel) !important;
+}
+
+
+@keyframes panelDrop {
 	from {
 		opacity: 0;
-		transform: translateY(12px);
+		transform: translateY(16px);
 	}
 	to {
 		opacity: 1;
@@ -52,13 +180,7 @@ section {
 	}
 }
 
-@keyframes slideFade {
-	from {
-		opacity: 0;
-		transform: translateX(12px);
-	}
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+.section-block {
+	animation: panelDrop 0.5s ease;
+	margin-top: 28px;
 }
