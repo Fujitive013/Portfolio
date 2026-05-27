@@ -1,6 +1,6 @@
 const Footer = () => (
-  <footer className="bg-gray-800 py-6 mt-8">
-    <div className="max-w-6xl mx-auto px-6 text-center text-gray-400 text-sm">
+  <footer className="border-t-2 manga-border manga-bg">
+    <div className="manga-page text-center text-xs uppercase tracking-[0.18em] py-6 manga-ink">
       &copy; {new Date().getFullYear()} Axel L. Paredes. All rights reserved.
     </div>
   </footer>

@@ -94,138 +94,113 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="section-block max-w-6xl mx-auto px-6 py-20">
-      <div className="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
-        <div>
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">Featured Projects</h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            Real-world applications in ML, Backend, and Full Stack Development.
-          </p>
-        </div>
-        
-        {/* Navigation Buttons */}
-        <div className="flex gap-3">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handlePrev}
-            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Previous project"
-          >
-            ←
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleNext}
-            className="group flex items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-white text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Next project"
-          >
-            →
-          </motion.button>
-        </div>
-      </div>
+    <section id="projects" className="section-block">
+      <div className="manga-panel">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <h2 className="manga-title text-2xl font-bold">Featured Projects</h2>
+              <p className="text-sm manga-muted-text">Real-world applications in ML, Backend, and Full Stack Development.</p>
+            </div>
+            <div className="flex gap-3">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handlePrev}
+                className="manga-outline-button text-xs"
+                aria-label="Previous project"
+              >
+                Prev
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleNext}
+                className="manga-outline-button text-xs"
+                aria-label="Next project"
+              >
+                Next
+              </motion.button>
+            </div>
+          </div>
 
-      <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
-        <div className="min-h-[600px] lg:min-h-[500px] flex flex-col relative">
-          <AnimatePresence mode="wait" initial={false} custom={direction}>
-            <motion.div
-              key={index}
-              custom={direction}
-              initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction > 0 ? -50 : 50 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="grid grid-cols-1 lg:grid-cols-12 flex-grow h-full w-full"
-            >
-            
-            {/* Left Side: Details */}
-            <div className="lg:col-span-8 p-8 flex flex-col justify-between">
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="px-3 py-1 text-xs font-semibold tracking-wide uppercase rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-                    Project 0{index + 1}
-                  </span>
-                  <a 
-                    href={slide.repoUrl}
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center gap-1 transition-colors"
-                  >
-                    View Repository ↗
-                  </a>
-                </div>
-                
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
-                  {slide.title}
-                </h3>
-                
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">
-                  {slide.description}
-                </p>
-
-                {/* Technologies Pills */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {slide.technologies.map((tech) => (
-                    <span 
-                      key={tech} 
-                      className="px-3 py-1 text-sm rounded-md bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700"
+          <div className="relative overflow-hidden border-2 manga-border">
+            <div className="min-h-[520px] flex flex-col relative">
+              <AnimatePresence mode="wait" initial={false} custom={direction}>
+                <motion.div
+                  key={index}
+                  custom={direction}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="flex flex-col gap-6 p-6"
+                >
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="manga-caption">Project 0{index + 1}</span>
+                    <a
+                      href={slide.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs font-semibold uppercase tracking-[0.18em] hover:underline"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Highlights List */}
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-3">
-                    Key Highlights
-                  </h4>
-                  <ul className="space-y-2">
-                    {slide.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm">
-                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-500" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side: Metrics Panel */}
-            <div className="lg:col-span-4 bg-gray-50 dark:bg-gray-800/50 p-8 border-l border-gray-200 dark:border-gray-800 flex flex-col justify-center">
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-6 pb-2 border-b border-gray-200 dark:border-gray-700">
-                Project Metrics
-              </h4>
-              <div className="grid grid-cols-1 gap-6">
-                {Object.entries(slide.metrics).map(([key, value]) => (
-                  <div key={key}>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">{key}</p>
-                    <p className="text-xl font-bold text-gray-900 dark:text-white font-mono">{value}</p>
+                      View Repository
+                    </a>
                   </div>
-                ))}
-              </div>
-            </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
 
-        {/* Progress Bar Indicators */}
-        <div className="absolute bottom-0 w-full bg-gray-50 dark:bg-gray-800/80 px-8 py-4 flex items-center justify-center gap-2 border-t border-gray-200 dark:border-gray-800 z-10">
-          {projects.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setDirection(i > index ? 1 : -1);
-                setIndex(i);
-              }}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index ? 'w-12 bg-emerald-500' : 'w-4 bg-gray-300 dark:bg-gray-600 hover:bg-emerald-300'
-              }`}
-              aria-label={`Go to project ${i + 1}`}
-            />
-          ))}
+                  <h3 className="text-2xl font-bold">{slide.title}</h3>
+
+                  <p className="text-base leading-relaxed manga-ink">{slide.description}</p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {slide.technologies.map((tech) => (
+                      <span key={tech} className="px-3 py-1 text-xs font-semibold border-2 manga-border manga-bg">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div>
+                    <h4 className="manga-caption">Key Highlights</h4>
+                    <ul className="mt-3 grid gap-2">
+                      {slide.highlights.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm manga-ink">
+                          <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full manga-dot" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="border-t-2 manga-border pt-4">
+                    <h4 className="manga-caption">Project Metrics</h4>
+                    <div className="mt-3 grid grid-cols-2 gap-4">
+                      {Object.entries(slide.metrics).map(([key, value]) => (
+                        <div key={key} className="border-2 manga-border p-3">
+                          <p className="text-xs uppercase tracking-[0.18em] manga-muted-text">{key}</p>
+                          <p className="text-lg font-bold">{value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="border-t-2 manga-border px-6 py-4 flex items-center justify-center gap-2">
+              {projects.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setDirection(i > index ? 1 : -1);
+                    setIndex(i);
+                  }}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === index ? "w-10 bg-[var(--manga-border)]" : "w-4 bg-[var(--manga-muted)]"}`}
+                  aria-label={`Go to project ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

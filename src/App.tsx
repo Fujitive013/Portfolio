@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AboutSection from "./components/AboutSection";
+import ExperienceSection from "./components/ExperienceSection";
 import EducationSection from "./components/EducationSection";
 import CertificationsSection from "./components/CertificationsSection";
 import TechStackSection from "./components/TechStackSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
+
+const MoonIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+  </svg>
+);
 
 const SunIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -15,14 +22,8 @@ const SunIcon = () => (
   </svg>
 );
 
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
-  </svg>
-);
-
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -35,10 +36,11 @@ function App() {
 
   return (
     <div>
-      <div className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors">
+      <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 manga-page">
           <AboutSection />
+          <ExperienceSection />
           <EducationSection />
           <TechStackSection />
           <CertificationsSection />
@@ -49,7 +51,7 @@ function App() {
         <button
           onClick={() => setDarkMode((prev) => !prev)}
           aria-label="Toggle color theme"
-          className="fixed bottom-6 right-6 z-30 h-12 w-12 rounded-full border border-gray-200 bg-white text-gray-900 shadow-lg flex items-center justify-center hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 transition-colors"
+          className="fixed bottom-6 right-6 z-30 h-12 w-12 manga-fab flex items-center justify-center transition"
         >
           {darkMode ? <SunIcon /> : <MoonIcon />}
         </button>
