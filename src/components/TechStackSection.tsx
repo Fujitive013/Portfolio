@@ -10,6 +10,7 @@ import KaggleIcon from "../assets/Kaggle.svg";
 import MongoDBIcon from "../assets/MongoDB.svg";
 import NodeIcon from "../assets/Node.js.svg";
 import NPMIcon from "../assets/NPM.svg";
+import NextIcon from "../assets/nextjs.svg";
 import PostmanIcon from "../assets/Postman.svg";
 import PythonIcon from "../assets/Python.svg";
 import ReactIcon from "../assets/react.svg";
@@ -19,6 +20,7 @@ import VSCodeIcon from "../assets/Visual Studio Code (VS Code).svg";
 import ViteIcon from "../assets/Vite.js.svg";
 import DockerIcon from "../assets/Docker.svg";
 import ExpoIcon from "../assets/expo-go-app-seeklogo.png";
+import DrizzleIcon from "../assets/drizzle-orm.svg";
 import { motion } from "framer-motion";
 
 const brandPalette: Record<string, { className: string; hex: string; hexDark?: string }> = {
@@ -28,12 +30,14 @@ const brandPalette: Record<string, { className: string; hex: string; hexDark?: s
   Java: { className: "text-orange-500", hex: "#f97316" },
   SQL: { className: "text-indigo-500", hex: "#6366f1" },
   "React.js": { className: "text-cyan-500", hex: "#22d3ee" },
+  "Next.js": { className: "text-gray-900 dark:text-gray-100", hex: "#111827", hexDark: "#f3f4f6" },
   "React Native": { className: "text-sky-500", hex: "#0ea5e9" },
   Expo: { className: "text-slate-600 dark:text-slate-300", hex: "#94a3b8" },
   Vite: { className: "text-purple-500", hex: "#a855f7" },
   "Node.js": { className: "text-green-500", hex: "#22c55e" },
   "Express.js": { className: "text-slate-600 dark:text-slate-200", hex: "#94a3b8" },
   FastAPI: { className: "text-teal-500", hex: "#14b8a6" },
+  DrizzleORM: { className: "text-amber-500", hex: "#f59e0b" },
   "RESTful API Design": { className: "text-blue-600 dark:text-blue-200", hex: "#2563eb", hexDark: "#bfdbfe" },
   MongoDB: { className: "text-emerald-500", hex: "#10b981" },
   "Firebase Realtime DB": { className: "text-orange-500", hex: "#f97316" },
@@ -55,12 +59,14 @@ const iconFor = (label: string, sizeClass: string) => {
     Java: JavaIcon,
     SQL: SQLIcon,
     "React.js": ReactIcon,
+    "Next.js": NextIcon,
     "React Native": ReactIcon,
     Expo: ExpoIcon,
     Vite: ViteIcon,
     "Node.js": NodeIcon,
     "Express.js": ExpressIcon,
     FastAPI: FastAPIIcon,
+    DrizzleORM: DrizzleIcon,
     MongoDB: MongoDBIcon,
     "Firebase Realtime DB": FirebaseIcon,
     "Supabase (PostgreSQL)": "https://img.icons8.com/?size=100&id=grZaE9tjqDyr&format=png&color=000000",
@@ -99,32 +105,27 @@ const iconFor = (label: string, sizeClass: string) => {
 const categories = [
   {
     title: "Languages",
-    pillClass:
-      "border-blue-200 bg-blue-50 text-blue-900 dark:border-blue-700/70 dark:bg-blue-900/30 dark:text-blue-100",
+    pillClass: "manga-skill",
     items: ["JavaScript", "TypeScript", "Python", "Java", "SQL"],
   },
   {
     title: "Frameworks & Libraries",
-    pillClass:
-      "border-purple-200 bg-purple-50 text-purple-900 dark:border-purple-700/70 dark:bg-purple-900/30 dark:text-purple-100",
-    items: ["React.js", "React Native", "Expo", "Vite"],
+    pillClass: "manga-skill",
+    items: ["React.js", "Next.js", "React Native", "Expo", "Vite"],
   },
   {
     title: "Backend & APIs",
-    pillClass:
-      "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-700/70 dark:bg-amber-900/30 dark:text-amber-100",
-    items: ["Node.js", "Express.js", "FastAPI", "RESTful API Design"],
+    pillClass: "manga-skill",
+    items: ["Node.js", "Express.js", "FastAPI", "DrizzleORM", "RESTful API Design"],
   },
   {
     title: "Databases & Storage",
-    pillClass:
-      "border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-700/70 dark:bg-emerald-900/30 dark:text-emerald-100",
+    pillClass: "manga-skill",
     items: ["MongoDB", "Firebase Realtime DB", "Supabase (PostgreSQL)"],
   },
   {
     title: "Tooling",
-    pillClass:
-      "border-slate-200 bg-slate-50 text-slate-900 dark:border-slate-700/70 dark:bg-slate-900/30 dark:text-slate-100",
+    pillClass: "manga-skill",
     items: ["Git & GitHub", "Docker", "Jupyter", "Kaggle", "Postman", "VS Code", "npm"],
   },
 ];
@@ -147,7 +148,7 @@ const Pill = ({ label, pillClass }: { label: string; pillClass: string }) => {
       drag
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={0.2}
-      className={`cursor-grab active:cursor-grabbing px-4 py-2 rounded-full border shadow-sm inline-flex items-center gap-2 ${pillClass} user-select-none touch-none`}
+      className={`cursor-grab active:cursor-grabbing px-4 py-2 rounded-full border-2 shadow-sm inline-flex items-center gap-2 ${pillClass} user-select-none touch-none`}
       style={{ boxShadow: `0 0 0 1px ${accentHex}20, 0 6px 12px -6px ${accentHex}${outerAlpha}, 0 12px 28px -14px ${accentHex}${innerAlpha}` }}
     >
       <span className={`flex items-center justify-center ${sizeClass} pointer-events-none`}>
@@ -165,9 +166,9 @@ const SkillCategory = ({ category }: { category: typeof categories[0] }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-800 dark:bg-gray-800 h-full"
+      className="manga-panel"
     >
-      <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100 flex items-center justify-between">
+      <h3 className="manga-title text-base font-semibold mb-4 flex items-center justify-between">
         {category.title}
       </h3>
       <div className="flex flex-wrap gap-2">
@@ -180,20 +181,22 @@ const SkillCategory = ({ category }: { category: typeof categories[0] }) => {
 };
 
 const TechStackSection = () => (
-  <section id="skills" className="section-block max-w-6xl mx-auto px-6 py-16">
-    <motion.h2 
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="text-3xl font-semibold mb-6"
-    >
-      Skills & Tech
-    </motion.h2>
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-      {categories.map((category) => (
-        <SkillCategory key={category.title} category={category} />
-      ))}
+  <section id="skills" className="section-block">
+    <div className="manga-panel">
+      <motion.h2
+        initial={{ opacity: 0, y: -12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="manga-title text-2xl font-semibold mb-6"
+      >
+        Skills & Tech
+      </motion.h2>
+      <div className="grid gap-6 md:grid-cols-2">
+        {categories.map((category) => (
+          <SkillCategory key={category.title} category={category} />
+        ))}
+      </div>
     </div>
   </section>
 );
