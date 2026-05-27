@@ -46,14 +46,15 @@ const AboutSection = () => {
               Axel L. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">Paredes</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-              Backend Developer & Machine Learning Enthusiast
+              Information Technology | Full-Stack Developer
             </p>
           </div>
 
           {/* Bio */}
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg">
-            I specialize in building secure <strong>REST APIs</strong> and integrating <strong>Machine Learning</strong> models into real-time systems. 
-            Currently focused on text processing and GPS data analysis using Python. Based in Misamis Oriental, Philippines.
+            Innovative Full-Stack Developer with a BS in Information Technology, experienced across the software development lifecycle.
+            I design relational databases and secure APIs, and craft state-driven front-end experiences with modern React and TypeScript.
+            Based in Misamis Oriental, Philippines.
           </p>
 
           {/* Tech Stack Pills */}
