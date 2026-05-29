@@ -3,6 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
+    title: "RedisQ Gateway - Payment Webhook Queueing Service",
+    description: "Express gateway for payment webhooks. Accepts payment events, enqueues receipt jobs with BullMQ/Redis, and a background worker stores transactions in Supabase while sending receipts via Elastic Email.",
+    technologies: ["Node.js", "Express.js", "BullMQ", "Redis", "Supabase", "Elastic Email", "Docker"],
+    repoUrl: "https://github.com/Fujitive013/redisq-gateway",
+    highlights: [
+      "Built a webhook intake API that queues receipt jobs with BullMQ.",
+      "Implemented idempotency via BullMQ jobId tied to transaction_id.",
+      "Worker persists transactions in Supabase and sends receipts through Elastic Email.",
+      "Health check endpoint validates Redis and Supabase connectivity.",
+      "Local dev flow uses docker compose to provision Redis."
+    ],
+    metrics: {
+      "Queue": "BullMQ",
+      "Storage": "Supabase",
+      "Email": "Elastic Email",
+      "Idempotency": "transaction_id"
+    }
+  },
+  {
     title: "RideAlert ML - High-Precision GPS Correction Pipeline",
     description: "Advanced machine learning pipeline for smartphone GPS correction using Gradient Boosting Regressor. Trained on the Smartphone Decimeter Challenge 2023 dataset to achieve sub-10 meter GPS accuracy through offset-based correction learning and multi-sensor fusion (GNSS + IMU).",
     technologies: ["Python", "Jupyter", "scikit-learn", "Gradient Boosting", "pandas", "Folium", "Matplotlib"],
@@ -55,24 +74,6 @@ const projects = [
       "Auth": "JWT + Bcrypt",
       "Real-time": "Socket.io",
       "API Categories": "5"
-    }
-  },
-  {
-    title: "Motodachi - Ride-Hailing Platform Backend",
-    description: "Full-stack ride-hailing backend supporting dual-role users (Passenger/Driver). Engineered a complex booking state machine with atomic database operations to prevent race conditions and integrated Google Maps API for accurate fare calculation.",
-    technologies: ["Node.js", "Express.js", "MongoDB", "Socket.io", "Google Maps API", "React Native", "JWT"],
-    repoUrl: "https://github.com/Fujitive013/mobile-prog-DP",
-    highlights: [
-      "Engineered atomic booking state machine (Pending → Accepted → Active → Completed).",
-      "Created real-time bidirectional geolocation tracking with 5-second updates.",
-      "Integrated Google Maps for geocoding, polyline decoding, and fare calculation.",
-      "Built hybrid schema allowing users to transition between Passenger and Driver roles."
-    ],
-    metrics: {
-      "Booking States": "4",
-      "Update Interval": "5 sec",
-      "User Roles": "Dual (2)",
-      "Rating": "Bidirectional"
     }
   }
 ];
