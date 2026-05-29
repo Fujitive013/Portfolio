@@ -45,7 +45,7 @@ const AboutSection = () => {
           <div className="flex flex-wrap gap-3">
             <a href="#contact" className="manga-button text-sm">Contact Me</a>
             <a href="#projects" className="manga-outline-button text-sm">View Projects</a>
-            <a href="/Resume.pdf" download="Axel_Paredes_Resume.pdf" className="manga-outline-button text-sm flex items-center gap-2">
+            <a href="/Resume.pdf" download="PAREDES_CV.pdf" className="manga-outline-button text-sm flex items-center gap-2">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
               Resume
             </a>

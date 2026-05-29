@@ -23,7 +23,7 @@ const SunIcon = () => (
 );
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
     const root = document.documentElement;

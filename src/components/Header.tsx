@@ -32,7 +32,7 @@ const Header = ({}: HeaderProps) => {
                 {link.label}
               </a>
             ))}
-            <a href="/Resume.pdf" download="Axel_Paredes_Resume.pdf" className="flex items-center gap-2 hover:underline">
+            <a href="/Resume.pdf" download="PAREDES_CV.pdf" className="flex items-center gap-2 hover:underline">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
               Resume
             </a>
@@ -64,7 +64,7 @@ const Header = ({}: HeaderProps) => {
                 {link.label}
               </a>
             ))}
-            <a href="/Resume.pdf" download="Axel_Paredes_Resume.pdf" className="flex items-center gap-2 hover:underline" onClick={handleNavClick}>
+            <a href="/Resume.pdf" download="PAREDES_CV.pdf" className="flex items-center gap-2 hover:underline" onClick={handleNavClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
               Resume
             </a>
