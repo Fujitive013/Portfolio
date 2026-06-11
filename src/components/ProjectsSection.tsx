@@ -3,6 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
+    title: "RideAlert ML - High-Precision GPS Correction Pipeline",
+    description: "Advanced machine learning pipeline for IoT GPS correction using Gradient Boosting Regressor. Trained on the Smartphone Decimeter Challenge 2023 dataset to achieve sub-10 meter GPS accuracy through offset-based correction learning and multi-sensor fusion (GNSS + IMU).",
+    technologies: ["Python", "Jupyter", "scikit-learn", "Gradient Boosting", "pandas", "Folium", "Matplotlib"],
+    repoUrl: "https://github.com/Fujitive013/ML-code-RideAlert",
+    highlights: [
+      "Achieved sub-10m mean GPS accuracy (80%+ predictions under 10m).",
+      "Engineered 15+ features from multi-sensor fusion: GNSS (SNR, Azimuth) + IMU (Accel/Gyro).",
+      "Implemented offset-based correction learning: corrected_lat = wls_lat + Δlat_prediction.",
+      "Created interactive Folium visualizations comparing raw vs. corrected GPS tracks.",
+      "Applied domain filtering (Speed ≤15m/s) targeting city bus applications."
+    ],
+    metrics: {
+      "Mean Accuracy": "<10m",
+      "Predictions <10m": "80%+",
+      "Features": "15+",
+      "Model": "Gradient Boosting"
+    }
+  },
+  {
     title: "RedisQ Gateway - Payment Webhook Queueing Service",
     description: "Express gateway for payment webhooks. Accepts payment events, enqueues receipt jobs with BullMQ/Redis, and a background worker stores transactions in Supabase while sending receipts via Elastic Email.",
     technologies: ["Node.js", "Express.js", "BullMQ", "Redis", "Supabase", "Elastic Email", "Docker"],
@@ -19,25 +38,6 @@ const projects = [
       "Storage": "Supabase",
       "Email": "Elastic Email",
       "Idempotency": "transaction_id"
-    }
-  },
-  {
-    title: "RideAlert ML - High-Precision GPS Correction Pipeline",
-    description: "Advanced machine learning pipeline for smartphone GPS correction using Gradient Boosting Regressor. Trained on the Smartphone Decimeter Challenge 2023 dataset to achieve sub-10 meter GPS accuracy through offset-based correction learning and multi-sensor fusion (GNSS + IMU).",
-    technologies: ["Python", "Jupyter", "scikit-learn", "Gradient Boosting", "pandas", "Folium", "Matplotlib"],
-    repoUrl: "https://github.com/Fujitive013/ML-code-RideAlert",
-    highlights: [
-      "Achieved sub-10m mean GPS accuracy (80%+ predictions under 10m).",
-      "Engineered 15+ features from multi-sensor fusion: GNSS (SNR, Azimuth) + IMU (Accel/Gyro).",
-      "Implemented offset-based correction learning: corrected_lat = wls_lat + Δlat_prediction.",
-      "Created interactive Folium visualizations comparing raw vs. corrected GPS tracks.",
-      "Applied domain filtering (Speed ≤15m/s) targeting city bus applications."
-    ],
-    metrics: {
-      "Mean Accuracy": "<10m",
-      "Predictions <10m": "80%+",
-      "Features": "15+",
-      "Model": "Gradient Boosting"
     }
   },
   {
