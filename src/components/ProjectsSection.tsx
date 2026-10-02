@@ -3,6 +3,25 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
+    title: "Semantic Ledger Engine - Agentic Vendor Entity Extraction",
+    description: "FastAPI microservice that converts unstructured text (invoices, payment notes, emails) into structured vendor transaction records. Uses a Hugging Face LLM for extraction, local fuzzy matching for vendor standardization, and appends immutable rows to a PocketBase ledger.",
+    technologies: ["Python", "FastAPI", "Pydantic", "Hugging Face", "RapidFuzz", "PocketBase", "httpx"],
+    repoUrl: "https://github.com/Fujitive013/semantic-ledger-engine",
+    highlights: [
+      "Built agentic extraction endpoint: fuzzy-matches vendors locally, injects match as LLM hint, extracts structured JSON, validates, and appends — in one pipeline.",
+      "Designed immutable transaction ledger architecture — every document becomes a new row with complete audit trail; historical records are never overwritten.",
+      "Implemented RapidFuzz WRatio scoring with legal-suffix normalization to standardize vendor names (e.g., routing \"Acme Inc\" to \"Acme Corp\").",
+      "Classify documents by money-movement direction (invoice vs. receipt vs. refund), not by text labels.",
+      "Enforced strict Pydantic guardrails: amount > 0, literal status/document_type sets, duplicate rejection via 409 Conflict."
+    ],
+    metrics: {
+      "Model": "Qwen2.5-7B",
+      "Fuzzy Match": "RapidFuzz",
+      "Storage": "PocketBase",
+      "Validation": "Pydantic"
+    }
+  },
+  {
     title: "RideAlert ML - High-Precision GPS Correction Pipeline",
     description: "Advanced machine learning pipeline for IoT GPS correction using Gradient Boosting Regressor. Trained on the Smartphone Decimeter Challenge 2023 dataset to achieve sub-10 meter GPS accuracy through offset-based correction learning and multi-sensor fusion (GNSS + IMU).",
     technologies: ["Python", "Jupyter", "scikit-learn", "Gradient Boosting", "pandas", "Folium", "Matplotlib"],
